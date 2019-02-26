@@ -1,18 +1,15 @@
 FROM python:3.7.2
 
-# 创建容器运行时的组 flaskgroup 和用户 flaskuser
+# create flaskgroup and flaskuser
 RUN groupadd flaskgroup && useradd -m -g flaskgroup -s /bin/bash flaskuser
 
-# 创建目录并指定工作目录
-RUN mkdir -p /home
+# create container
+RUN mkdir -p /home/level
 
-WORKDIR /home
+WORKDIR /home/level
 
-# 复制当前目录至容器目录
-# COPY . /home
-
-# 权限配置
+# set the power
 RUN chown -R flaskuser:flaskgroup /home
 
+# point the user
 USER flaskuser
-# EXPOSE 5000
